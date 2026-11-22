@@ -41,30 +41,48 @@
   .list li span { color:var(--sage); font-weight:400; }
 
   /* Parte bassa: spazi pubblicitari */
-  .ads { background:var(--wheat); color:var(--ink); padding:clamp(64px, 10vw, 120px) 0; }
-  .ads .inner { display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(32px, 6vw, 88px); align-items:center; }
-  .ads h2 { font-weight:800; font-size:clamp(2.2rem, 5.2vw, 4.1rem); line-height:.98; letter-spacing:-.035em; max-width:13ch; }
-  .ads p { font-size:clamp(1.05rem, 1.4vw, 1.2rem); line-height:1.6; max-width:42ch; margin-top:22px; }
-  .btn { display:inline-flex; align-items:center; gap:12px; margin-top:30px; background:var(--ink); color:var(--wheat); text-decoration:none; font-weight:600; font-size:1.05rem; padding:16px 26px; border-radius:999px; transition:transform .15s ease, background .15s ease; }
-  .btn:hover { background:var(--pine); color:var(--mist); transform:translateY(-1px); }
+  .ads { position:relative; overflow:hidden; background:#06140F; color:var(--mist); padding:clamp(72px, 10vw, 128px) 0; isolation:isolate; }
+  .ads::before { content:""; position:absolute; inset:-20%; z-index:-2;
+    background:radial-gradient(40% 50% at 18% 30%, rgba(200,220,82,.22), transparent 70%),
+               radial-gradient(35% 45% at 85% 20%, rgba(46,230,214,.20), transparent 70%),
+               radial-gradient(45% 50% at 70% 95%, rgba(34,184,156,.18), transparent 70%);
+    filter:blur(10px); }
+  .ads::after { content:""; position:absolute; inset:0; z-index:-1; opacity:.35;
+    background-image:linear-gradient(rgba(233,240,236,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(233,240,236,.06) 1px, transparent 1px);
+    background-size:48px 48px; mask-image:radial-gradient(70% 70% at 50% 40%, #000, transparent); -webkit-mask-image:radial-gradient(70% 70% at 50% 40%, #000, transparent); }
+  .ads .inner { display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(36px, 5vw, 72px); align-items:center; }
+  .chip { display:inline-flex; align-items:center; gap:10px; padding:8px 14px; border-radius:999px; font-size:.9rem; font-weight:600;
+    background:rgba(233,240,236,.06); border:1px solid rgba(233,240,236,.14); backdrop-filter:blur(8px); }
+  .chip i { width:8px; height:8px; border-radius:50%; background:#2EE6D6; box-shadow:0 0 0 0 rgba(46,230,214,.7); animation:pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow:0 0 0 10px rgba(46,230,214,0); } 100% { box-shadow:0 0 0 0 rgba(46,230,214,0); } }
+  .ads h2 { margin-top:22px; font-weight:800; font-size:clamp(2.4rem, 5.6vw, 4.6rem); line-height:.96; letter-spacing:-.04em; max-width:12ch;
+    background:linear-gradient(100deg, #E8F870 0%, #9BE068 45%, #2EE6D6 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .ads p.lead { font-size:clamp(1.05rem, 1.4vw, 1.2rem); line-height:1.6; max-width:42ch; margin-top:22px; color:rgba(233,240,236,.82); }
+  .btn { display:inline-flex; align-items:center; gap:12px; margin-top:32px; color:#06140F; text-decoration:none; font-weight:700; font-size:1.05rem; padding:16px 26px; border-radius:14px;
+    background:linear-gradient(100deg, #E8F870, #2EE6D6); box-shadow:0 10px 40px -10px rgba(46,230,214,.6), inset 0 1px 0 rgba(255,255,255,.5); transition:transform .15s ease, box-shadow .15s ease; }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 16px 50px -10px rgba(46,230,214,.8), inset 0 1px 0 rgba(255,255,255,.5); }
   .btn svg { width:20px; height:20px; }
-  .steps { list-style:none; margin-top:36px; display:grid; gap:14px; counter-reset:s; max-width:46ch; }
-  .steps li { counter-increment:s; display:grid; grid-template-columns:36px 1fr; gap:14px; align-items:center; font-size:1.02rem; line-height:1.4; }
-  .steps li::before { content:counter(s); width:36px; height:36px; border-radius:50%; background:var(--ink); color:var(--wheat); display:grid; place-items:center; font-weight:800; }
-  .show { position:relative; min-height:430px; display:grid; place-items:center; }
-  .ghost { position:absolute; width:78%; height:330px; border:2px dashed rgba(20,33,28,.4); border-radius:22px; transform:rotate(-6deg) translate(-70px, 46px); display:flex; align-items:flex-end; justify-content:flex-start; padding:18px 20px; font-weight:600; color:rgba(20,33,28,.6); }
-  .card { position:relative; width:min(380px, 88%); background:#fff; border-radius:22px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(20,33,28,.45), 0 2px 0 rgba(20,33,28,.06); transform:rotate(2.5deg); transition:transform .3s ease; }
-  .card:hover { transform:rotate(0deg) translateY(-4px); }
-  .card .pic { height:170px; background:radial-gradient(120% 120% at 20% 10%, #F6D88A 0%, #E8A85C 45%, #B8643A 100%); display:grid; place-items:center; }
-  .card .pic svg { width:120px; height:120px; color:#fff; opacity:.95; }
-  .card .body { padding:20px 22px 22px; color:var(--ink); }
-  .card .tag { font-size:.82rem; color:#6b7a72; }
-  .card h3 { font-size:1.5rem; font-weight:800; letter-spacing:-.02em; margin-top:4px; }
-  .card p { font-size:.98rem; line-height:1.5; margin-top:6px; max-width:none; }
-  .card .row { display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding-top:14px; border-top:1px solid #E6ECE8; font-size:.92rem; }
-  .card .pill { background:var(--pine); color:var(--wheat); padding:8px 14px; border-radius:999px; font-weight:600; }
-  .sticker { position:absolute; top:6px; right:4%; width:118px; height:118px; border-radius:50%; background:var(--ink); color:var(--wheat); display:grid; place-items:center; text-align:center; font-weight:800; font-size:1.45rem; line-height:1; transform:rotate(12deg); box-shadow:0 14px 30px -10px rgba(0,0,0,.5); border:3px dashed rgba(200,220,82,.55); outline:6px solid var(--ink); }
-  .sticker small { display:block; font-size:.72rem; font-weight:600; margin-top:6px; color:var(--mist); }
+  .bento { display:grid; grid-template-columns:1.25fr 1fr; grid-template-rows:auto auto; gap:14px; }
+  .tile { position:relative; border-radius:22px; padding:20px; background:linear-gradient(160deg, rgba(233,240,236,.08), rgba(233,240,236,.02));
+    border:1px solid rgba(233,240,236,.12); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); transition:border-color .2s ease, transform .2s ease; }
+  .tile:hover { border-color:rgba(46,230,214,.5); transform:translateY(-2px); }
+  .tile h3 { font-size:1.05rem; font-weight:700; letter-spacing:-.01em; }
+  .tile .muted { color:rgba(233,240,236,.65); font-size:.92rem; line-height:1.45; margin-top:6px; }
+  .ad { grid-row:span 2; padding:0; overflow:hidden; display:flex; flex-direction:column; }
+  .ad .pic { height:180px; background:radial-gradient(120% 120% at 20% 10%, #F6D88A 0%, #E8A85C 45%, #B8643A 100%); display:grid; place-items:center; position:relative; }
+  .ad .pic::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(6,20,15,.55)); }
+  .ad .pic svg { width:110px; height:110px; color:#fff; position:relative; z-index:1; }
+  .ad .body { padding:18px 20px 20px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .ad .tag { font-size:.8rem; color:#2EE6D6; font-weight:600; }
+  .ad h3 { font-size:1.45rem; font-weight:800; letter-spacing:-.02em; }
+  .ad .row { margin-top:auto; padding-top:14px; border-top:1px solid rgba(233,240,236,.12); display:flex; justify-content:space-between; align-items:center; font-size:.9rem; color:rgba(233,240,236,.75); }
+  .ad .pill { background:rgba(200,220,82,.16); color:#E8F870; border:1px solid rgba(200,220,82,.35); padding:7px 12px; border-radius:999px; font-weight:600; }
+  .big { font-size:3.2rem; font-weight:800; letter-spacing:-.04em; line-height:1; background:linear-gradient(100deg, #E8F870, #2EE6D6); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .fmt { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .fmt span { font-size:.85rem; padding:6px 10px; border-radius:8px; background:rgba(233,240,236,.07); border:1px solid rgba(233,240,236,.12); }
+  .steps { grid-column:1 / -1; display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; list-style:none; counter-reset:s; }
+  .steps li { counter-increment:s; display:flex; gap:12px; align-items:center; font-size:.95rem; line-height:1.35; }
+  .steps li::before { content:counter(s); flex:none; width:30px; height:30px; border-radius:9px; display:grid; place-items:center; font-weight:800; font-size:.9rem; color:#06140F; background:linear-gradient(135deg, #E8F870, #2EE6D6); }
 
   footer { background:var(--pine-deep); color:var(--sage); font-size:.9rem; padding:26px 0; }
   footer .inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
@@ -72,12 +90,12 @@
 
   @media (max-width:760px) {
     .ads .inner { grid-template-columns:1fr; }
-    .show { min-height:380px; margin-top:12px; } .sticker { width:96px; height:96px; font-size:1.2rem; }
+    .bento { grid-template-columns:1fr; } .ad { grid-row:auto; } .steps { grid-template-columns:1fr; }
     .domains { padding-bottom:72px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .topo path { animation:none; stroke-dashoffset:0; }
-    .mail, .btn, .card { transition:none; }
+    .mail, .btn, .tile { transition:none; } .chip i { animation:none; }
   }
 </style>
 </head>
@@ -107,32 +125,40 @@
 <section class="ads">
   <div class="inner">
     <div>
+      <span class="chip"><i></i>Presto disponibili</span>
       <h2>Spazi pubblicitari in arrivo</h2>
-      <p>Hai un'attività da far conoscere? A breve su questi domini saranno disponibili spazi pubblicitari. Per informazioni scrivi a info@ichub.it.</p>
+      <p class="lead">Hai un'attività da far conoscere? A breve su questi domini saranno disponibili spazi pubblicitari. Per informazioni scrivi a info@ichub.it.</p>
       <a class="btn" href="mailto:info@ichub.it?subject=Spazi%20pubblicitari">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
         Chiedi informazioni sugli spazi
       </a>
-      <ol class="steps">
-        <li>Scrivi a info@ichub.it</li>
-        <li>Raccontaci la tua attività in due righe</li>
-        <li>Ti ricontattiamo con tutti i dettagli</li>
-      </ol>
     </div>
-    <div class="show">
-      <div class="ghost" aria-hidden="true">Il tuo spazio</div>
-      <article class="card" aria-label="Esempio di annuncio">
+    <div class="bento">
+      <article class="tile ad" aria-label="Esempio di annuncio">
         <div class="pic" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 26h48l-4-12H12z"/><path d="M8 26c0 4 3 6 6 6s6-2 6-6c0 4 3 6 6 6s6-2 6-6c0 4 3 6 6 6s6-2 6-6c0 4 3 6 6 6s6-2 6-6"/><path d="M12 32v20h40V32"/><path d="M27 52V40h10v12"/></svg>
         </div>
         <div class="body">
           <span class="tag">Esempio di annuncio</span>
           <h3>La tua bottega</h3>
-          <p>Prodotti del territorio, orari e contatti: tutto quello che serve per farti trovare.</p>
+          <p class="muted">Prodotti del territorio, orari e contatti: tutto quello che serve per farti trovare.</p>
           <div class="row"><span>Aperto lun–sab</span><span class="pill">Contattaci</span></div>
         </div>
       </article>
-      <div class="sticker" aria-hidden="true"><div>Presto<small>disponibili</small></div></div>
+      <div class="tile">
+        <div class="big">7</div>
+        <h3 style="margin-top:8px">domini, una vetrina</h3>
+        <p class="muted">Il tuo spazio visibile su tutti i siti della rete.</p>
+      </div>
+      <div class="tile">
+        <h3>Formati</h3>
+        <div class="fmt"><span>Banner</span><span>Box</span><span>Scheda attività</span></div>
+      </div>
+      <ol class="tile steps">
+        <li>Scrivi a info@ichub.it</li>
+        <li>Raccontaci la tua attività</li>
+        <li>Ti ricontattiamo con i dettagli</li>
+      </ol>
     </div>
   </div>
 </section>
