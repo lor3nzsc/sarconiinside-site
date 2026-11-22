@@ -6,7 +6,7 @@
 <title>sarconiinside – domini e spazi pubblicitari</title>
 <meta name="description" content="Informazioni sui domini sarconiinside, sarconinside e sarconistore e sui prossimi spazi pubblicitari: info@ichub.it">
 <meta name="theme-color" content="#0F3B30">
-<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="icon" type="image/svg+xml" href="/logo-badge.svg">
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=bricolage-grotesque:400,600,800&display=swap">
 <style>
@@ -29,7 +29,7 @@
   @keyframes draw { to { stroke-dashoffset:0; } }
   .inner { position:relative; width:var(--wrap); margin:0 auto; }
   .brand { font-weight:800; font-size:1.05rem; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; margin-bottom:clamp(56px, 10vh, 110px); }
-  .brand img { width:34px; height:34px; }
+  .brand img { width:38px; height:38px; }
   .frog { position:absolute; top:clamp(70px, 9vw, 120px); right:max(24px, calc((100% - 1120px) / 2)); width:clamp(150px, 22vw, 300px); height:auto; filter:drop-shadow(0 18px 40px rgba(0,0,0,.35)); pointer-events:none; }
   @media (max-width:760px) { .frog { width:110px; top:28px; opacity:.9; } .brand { visibility:hidden; } }
   .domains h1 { font-weight:600; font-size:clamp(1.5rem, 3.4vw, 2.6rem); line-height:1.18; letter-spacing:-.015em; max-width:22ch; }
@@ -48,9 +48,23 @@
   .btn { display:inline-flex; align-items:center; gap:12px; margin-top:30px; background:var(--ink); color:var(--wheat); text-decoration:none; font-weight:600; font-size:1.05rem; padding:16px 26px; border-radius:999px; transition:transform .15s ease, background .15s ease; }
   .btn:hover { background:var(--pine); color:var(--mist); transform:translateY(-1px); }
   .btn svg { width:20px; height:20px; }
-  .slots { display:grid; grid-template-columns:2fr 1fr; grid-template-rows:150px 110px; gap:14px; }
-  .slot { border:2px dashed rgba(20,33,28,.45); border-radius:14px; display:flex; align-items:flex-end; padding:14px 16px; font-weight:600; font-size:.95rem; color:rgba(20,33,28,.75); }
-  .slot.big { grid-row:span 2; background:rgba(20,33,28,.06); font-size:1.15rem; }
+  .steps { list-style:none; margin-top:36px; display:grid; gap:14px; counter-reset:s; max-width:46ch; }
+  .steps li { counter-increment:s; display:grid; grid-template-columns:36px 1fr; gap:14px; align-items:center; font-size:1.02rem; line-height:1.4; }
+  .steps li::before { content:counter(s); width:36px; height:36px; border-radius:50%; background:var(--ink); color:var(--wheat); display:grid; place-items:center; font-weight:800; }
+  .show { position:relative; min-height:430px; display:grid; place-items:center; }
+  .ghost { position:absolute; width:78%; height:330px; border:2px dashed rgba(20,33,28,.4); border-radius:22px; transform:rotate(-6deg) translate(-70px, 46px); display:flex; align-items:flex-end; justify-content:flex-start; padding:18px 20px; font-weight:600; color:rgba(20,33,28,.6); }
+  .card { position:relative; width:min(380px, 88%); background:#fff; border-radius:22px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(20,33,28,.45), 0 2px 0 rgba(20,33,28,.06); transform:rotate(2.5deg); transition:transform .3s ease; }
+  .card:hover { transform:rotate(0deg) translateY(-4px); }
+  .card .pic { height:170px; background:radial-gradient(120% 120% at 20% 10%, #F6D88A 0%, #E8A85C 45%, #B8643A 100%); display:grid; place-items:center; }
+  .card .pic svg { width:120px; height:120px; color:#fff; opacity:.95; }
+  .card .body { padding:20px 22px 22px; color:var(--ink); }
+  .card .tag { font-size:.82rem; color:#6b7a72; }
+  .card h3 { font-size:1.5rem; font-weight:800; letter-spacing:-.02em; margin-top:4px; }
+  .card p { font-size:.98rem; line-height:1.5; margin-top:6px; max-width:none; }
+  .card .row { display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding-top:14px; border-top:1px solid #E6ECE8; font-size:.92rem; }
+  .card .pill { background:var(--pine); color:var(--wheat); padding:8px 14px; border-radius:999px; font-weight:600; }
+  .sticker { position:absolute; top:6px; right:4%; width:118px; height:118px; border-radius:50%; background:var(--ink); color:var(--wheat); display:grid; place-items:center; text-align:center; font-weight:800; font-size:1.45rem; line-height:1; transform:rotate(12deg); box-shadow:0 14px 30px -10px rgba(0,0,0,.5); border:3px dashed rgba(200,220,82,.55); outline:6px solid var(--ink); }
+  .sticker small { display:block; font-size:.72rem; font-weight:600; margin-top:6px; color:var(--mist); }
 
   footer { background:var(--pine-deep); color:var(--sage); font-size:.9rem; padding:26px 0; }
   footer .inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
@@ -58,12 +72,12 @@
 
   @media (max-width:760px) {
     .ads .inner { grid-template-columns:1fr; }
-    .slots { grid-template-rows:120px 90px; }
+    .show { min-height:380px; margin-top:12px; } .sticker { width:96px; height:96px; font-size:1.2rem; }
     .domains { padding-bottom:72px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .topo path { animation:none; stroke-dashoffset:0; }
-    .mail, .btn { transition:none; }
+    .mail, .btn, .card { transition:none; }
   }
 </style>
 </head>
@@ -73,7 +87,7 @@
   <svg class="topo" viewBox="0 0 1440 760" preserveAspectRatio="xMaxYMin slice" aria-hidden="true"></svg>
   <div class="inner">
     <div class="brand">
-      <img src="/logo.svg" alt="" width="34" height="34">
+      <img src="/logo-badge.svg" alt="" width="38" height="38">
       sarconiinside
     </div>
     <h1>Per informazioni relative ai seguenti domini contattare</h1>
@@ -99,11 +113,26 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
         Chiedi uno spazio gratuito
       </a>
+      <ol class="steps">
+        <li>Scrivi a info@ichub.it</li>
+        <li>Mandaci logo, una foto e due righe sulla tua attività</li>
+        <li>Pubblichiamo il tuo spazio, senza costi</li>
+      </ol>
     </div>
-    <div class="slots" aria-hidden="true">
-      <div class="slot big">La tua attività qui, gratis</div>
-      <div class="slot">Banner</div>
-      <div class="slot">Box</div>
+    <div class="show">
+      <div class="ghost" aria-hidden="true">Il tuo spazio</div>
+      <article class="card" aria-label="Esempio di annuncio">
+        <div class="pic" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 26h48l-4-12H12z"/><path d="M8 26c0 4 3 6 6 6s6-2 6-6c0 4 3 6 6 6s6-2 6-6c0 4 3 6 6 6s6-2 6-6c0 4 3 6 6 6s6-2 6-6"/><path d="M12 32v20h40V32"/><path d="M27 52V40h10v12"/></svg>
+        </div>
+        <div class="body">
+          <span class="tag">Esempio di annuncio</span>
+          <h3>La tua bottega</h3>
+          <p>Prodotti del territorio, orari e contatti: tutto quello che serve per farti trovare.</p>
+          <div class="row"><span>Aperto lun–sab</span><span class="pill">Contattaci</span></div>
+        </div>
+      </article>
+      <div class="sticker" aria-hidden="true"><div>Gratis<small>nessun costo</small></div></div>
     </div>
   </div>
 </section>
